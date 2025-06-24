@@ -1,8 +1,11 @@
 from os import getenv, path
-from dotenv import load_dotenv
 from pathlib import Path
 
-load_dotenv()
+from environs import  Env
+
+env = Env()
+env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,12 +14,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = getenv("SECRET_KEY")
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = getenv('DEBUG')
+DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = getenv("ALLOWED_HOSTS").split(',')
+ALLOWED_HOSTS = env.str("ALLOWED_HOSTS").split(',')
 
 # Application definition
 
@@ -82,10 +85,10 @@ WSGI_APPLICATION = 'backend.ecommerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': getenv('MYSQL_DB'),
-        'USER': getenv('MYSQL_USER'),
-        'PASSWORD': getenv('MYSQL_PASSWORD'),
-        'HOST': getenv('MYSQL_HOST')
+        'NAME': env.str('MYSQL_DB'),
+        'USER': env.str('MYSQL_USER'),
+        'PASSWORD': env.str('MYSQL_PASSWORD'),
+        'HOST': env.str('MYSQL_HOST')
     }
 }
 

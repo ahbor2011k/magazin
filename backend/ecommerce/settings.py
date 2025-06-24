@@ -67,28 +67,27 @@ WSGI_APPLICATION = 'backend.ecommerce.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': getenv('POSTGRES_DB'),
+#         'USER': getenv('POSTGRES_USER'),
+#         'PASSWORD': getenv('POSTGRES_PASSWORD'),
+#         'HOST': getenv('POSTGRES_HOST'),
+#         'POST': getenv('POSTGRES_POST'),
+#     }
+# }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': getenv('POSTGRES_DB'),
-        'USER': getenv('POSTGRES_USER'),
-        'PASSWORD': getenv('POSTGRES_PASSWORD'),
-        'HOST': getenv('POSTGRES_HOST'),
-        'POST': getenv('POSTGRES_POST'),
-
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': getenv('MYSQL_DB'),
+        'USER': getenv('MYSQL_USER'),
+        'PASSWORD': getenv('MYSQL_PASSWORD'),
+        'HOST': getenv('MYSQL_HOST')
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': getenv('MYSQL_DB'),
-#         'USER': getenv('MYSQL_USER'),
-#         'PASSWORD': getenv('MYSQL_PASSWORD'),
-#         'HOST': getenv('MYSQL_HOST')
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
